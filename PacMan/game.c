@@ -1,7 +1,7 @@
 #include "game.h"
 
 
-// Procédure déplacant le curseur en (x,y)
+//Moves the cursor (x,y)
 void gotoXY(int x, int y){
 	COORD mycoord;
 	mycoord.X = x;
@@ -9,19 +9,18 @@ void gotoXY(int x, int y){
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), mycoord);
 }
 
-// Fonction de Creation et d'initialisation de la struct Game
+//Structure called game
 game_t* game_create(int height, int width){
 
-    // allouer en memoire le game
+    // memory alloc
     game_t* game = (game_t*) malloc(sizeof(game_t));
 
 
-    // allocation dynamique de la matrice board (champ de game) de taille [height][width]
-		// allocation de "height" adresses de type char
+    // allocation of the game board 
+	//height
     game->board = malloc(height*sizeof(char*));
 
-		// creer "height" array de taille "width"
-		// assigner l'adresse de chaque premier element de chaque array jusqu'a "height"
+	//width
     for(int i=0 ; i<height ; i++){
         game->board[i] = malloc(width*sizeof(char));
         for(int j=0 ; j<width ; j++){
@@ -29,39 +28,39 @@ game_t* game_create(int height, int width){
         }
     }
 
-    // initialisations des champs:  dimension, border, life, level
+    // initialisation of dimension, border, life, level
     game->dimension.x = width;
     game->dimension.y = height;
 	game->border=0;
 	game->life=5;
 	game->level=1;
 
-	// allouer une place en memoire pour chaque partie du corp du snake (initialement de 1)
+	// allocate memory for every co-ordinate that counts as the body
     game->snake_size = 1;
     game->snake_position = malloc(game->snake_size*sizeof(position_t));
 
-    // initialisation aleatoire de la position de la tete du snake (ou du Pacman) dans une case vide
+    // start position of pacman. this is assigned randomly
     do{
     	game->snake_position[0] = position_create(randomX(width),randomY(height));
     }while (game->snake_position[0].x!=' ');
 
-	// initialisation de la direction du snake de maniere aleatoire
+	// random direction of the snake
 	game->direction = randomdirection();
 
-	// initialisation du nombre d'obstacle
+	// number of obstacles initially
     game->obstacles_count = 0;
 
-	// renvoyer la struct game
+	// return the struct game
     return game;
 }
 
-// Procédure creant des bordures dans la matrice board
+// creating borders of the board
 void game_map(game_t* game){
 
 	// variables
 	int i=0, j=0;
 
-	// Placement dans la matrice board de tous les murs composant la bordure
+	// walls on the game board
 	for (i = 0; i < game->dimension.y; i++){
         game->board[i][0] = 186; // left wall '║'
         game->board[i][game->dimension.x-1] = 186 ; // right wall '║'
@@ -87,13 +86,13 @@ void game_map(game_t* game){
 
 }
 
-// Procédure creant un labyrinthe dans la matrice board
+// creating a maze on the board
 void game_maze(game_t* game){
 
 	// variable
 	int i=0;
 
-	// Placement dans la matrice board de tous les murs composant le labyrinthe
+	//placement of the walls yet again
 	game->board[0][12] = 203;
 	for (i = 1; i < 7; i++){
         game->board[i][12] = 186;
@@ -163,20 +162,20 @@ void game_maze(game_t* game){
 	}
 }
 
-// Procédure permettant le deplacement du snake/pacman en donnant en parametre game et le deplacement (utile au game_keep_moving)
+//nonstop movement of the ghosts and pacman
 void game_move(game_t* game, position_t offset){
 
 	// variables
 	position_t new_pos;
 	position_t old_pos;
 
-	// cas du snake : empeche le retour en arriere
+	// ghost only moves forward
 	if (game->snake_size>=2){
             if(offset.x==-game->direction.x && offset.y==-game->direction.y)
                 return;
     }
 
-	// memoriser la position actuelle de la tete du snake
+	// remember the position of the ghost at every instant 
 	old_pos.x = game->snake_position[0].x;
 	old_pos.y = game->snake_position[0].y;
 
