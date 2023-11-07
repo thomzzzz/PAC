@@ -179,11 +179,11 @@ void game_move(game_t* game, position_t offset){
 	old_pos.x = game->snake_position[0].x;
 	old_pos.y = game->snake_position[0].y;
 
-	// Ajouter le deplacement aux positions actuelles
+	// diff between new pos and old pos
 	new_pos.x = old_pos.x + offset.x;
 	new_pos.y = old_pos.y + offset.y;
 
-	// Tout sauf les bordures
+
 	if (new_pos.x != game->dimension.x-1 && new_pos.x != 0 && new_pos.y != game->dimension.y-1 && new_pos.y != 0 ){
 			// si les nouvelles positions sont des murs
 			if (game->board[new_pos.y][new_pos.x] != ' '
@@ -192,15 +192,14 @@ void game_move(game_t* game, position_t offset){
 			&& game->board[new_pos.y][new_pos.x] != '*'
 			&& game->board[new_pos.y][new_pos.x] != SNAKE_CHAR){
 
-				// bloquer la tete du snake devant le mur
+				// pacman can't move through a wall
 				new_pos.x=old_pos.x;
 				new_pos.y=old_pos.y;
 
 			}
 		}
 
-	// si la tete du snake sort de la matrice, alors il re-apparait à l'oppposé
-		//si bordures sont ON, alors le snake perd une vie
+	//if pacman moves off the border he comes from the other end of the board
     if(new_pos.x>=game->dimension.x-1){
 		if (game->border==1){ game->life--;}
         new_pos.x = 1;
@@ -215,18 +214,18 @@ void game_move(game_t* game, position_t offset){
         new_pos.y = game->dimension.y-2;
     }
 
-	// actualiser les positions de la tete du snake dans la matrice board
+	// new pos update to pointer
     game->board[new_pos.y][new_pos.x] = SNAKE_CHAR;
 
-	// si la tete du snake est libre de ce deplacer
+	// if free to move forward
 	if(new_pos.x != old_pos.x || new_pos.y != old_pos.y){
-		// le corp du snake suit la tete: chaque élément prend la place de son précèdant
+		// body moves with head. second link follows its link before it
 		for(int i=0; i<game->snake_size; i++){
 	        position_t tmp = game->snake_position[i];
 	        game->snake_position[i] = new_pos;
 	        new_pos = tmp;
 		}
-		// effacer l'element du corp apres déplacement vers son precedant
+		// delete the body link after moving forawrd
 		game->board[new_pos.y][new_pos.x] = VOID_CHAR;
 	}
 	// memoriser dans la direction de la tete snake le déplacement
@@ -709,7 +708,6 @@ void game_obstacle_move_diverty( game_t* game , int ctr){
 	}
 }
 
-// Fonction qui renvoie le minimum entre 4 distances (utile pour obstacle_tracking )
 int minimun_distance_obstacle(int d1, int d2, int d3, int d4){
 
 	// Variables
@@ -717,17 +715,15 @@ int minimun_distance_obstacle(int d1, int d2, int d3, int d4){
 	int min= tab[0];
 	int i=0;
 
-	// compare tout les elements de la liste et conserve dans min le minimum
+	// compare the minimum distance
 	for(i=0; i<3; i++){
 		if (tab[i+1]<tab[i]){
 			min=tab[i+1];
 		}
 	}
-	// revoyer le minimum apres avoir traverse toute la liste
 	return min;
 }
 
-// Procédure 'IA' placant dans la liste de direction 'track_direction_obstacles' les deplacements intelligent des obstacles
 void obstacle_tracking(game_t* game){
 
 	// Variables
@@ -738,15 +734,13 @@ void obstacle_tracking(game_t* game){
 	int snake_pos_y;
 	int i=0;
 
-	// Pour chaque obstacle 'E'
 	for (i=0; i<game->obstacles_count; i++){
 		if(game->obstacles->obstacle_type=='E'){
 
-			// memorise la position de la tete du snake (soit du PacMan)
 			snake_pos_x = game->snake_position[0].x;
 			snake_pos_y = game->snake_position[0].y;
 
-			// memorise les positions au dessus, en dessous, à gauche, à droite de l'obstacle (en x et y)
+			// memorise left and right pos
 			obs_x= game-> obstacles[i].pos.x;
 			obs_x_right= obs_x+1;
 			obs_x_left= obs_x-1;
@@ -755,49 +749,42 @@ void obstacle_tracking(game_t* game){
 			obs_y_under= obs_y+1;
 			obs_y_over= obs_y-1;
 
-			// calcul la distance des points entourant 'E' par rapport à la tete de l'obstacle
 			dist_right=sqrt(pow((obs_x_right-snake_pos_x),2)+ pow((obs_y-snake_pos_y),2));
 			dist_left=sqrt(pow((obs_x_left-snake_pos_x),2)+ pow((obs_y-snake_pos_y),2));
 			dist_over=sqrt(pow((obs_x-snake_pos_x),2)+pow((obs_y_over-snake_pos_y),2));
 			dist_under=sqrt(pow((obs_x-snake_pos_x),2)+pow((obs_y_under-snake_pos_y),2));
 
-			// si la distance minimum correspond au point à droite de l'obstacle
 			if (minimun_distance_obstacle(dist_right,dist_left,dist_over,dist_under)==dist_right) {
 				// alors la direction optimale est vers la droite donc déplacement (x=1, y=0)
 				opt_dir=position_create(1,0);
 
 			}
-			// si la distance minimum correspond au point à gauche de l'obstacle
 			else if (minimun_distance_obstacle(dist_right,dist_left,dist_over,dist_under)==dist_left) {
 				// alors la direction optimale est vers la gauche donc déplacement (x=-1, y=0)
 				opt_dir=position_create(-1,0);
 
 			}
-			// si la distance minimum correspond au point au dessus de l'obstacle
 			else if (minimun_distance_obstacle(dist_right,dist_left,dist_over,dist_under)==dist_over) {
 				// alors la direction optimale est vers le haut donc déplacement (x=0, y=-1)
 				opt_dir=position_create(0,-1);
 
 			}
-			// si la distance minimum correspond au point en dessous de l'obstacle
 			else if (minimun_distance_obstacle(dist_right,dist_left,dist_over,dist_under)==dist_under) {
 				// alors la direction optimale est vers le bas donc déplacement (x=0, y=1)
 				opt_dir=position_create(0,1);
 
 			}
-			// pour chaque obstacle, on stock cette direction optimale dans la liste de direction track_direction_obstacles (champ de la struct game)
 			game->track_direction_obstacles[i] = opt_dir;
 		}
 	}
 }
 
-// Procédure permettant d'afficher des pommes à l'écran
 void print_apples(game_t* game, int nb_apple){
 
 	// variables
 	int rX=0, rY=0, i=0;
 
-	// ajout de "nb_pomme" pommes dans une position aleatoire dans la zone de jeu et dans un espace vide
+	// fruit ina random place
 	for (i=0;i<nb_apple;i++){
 		do{
 			rX = randomX(game->dimension.x);
@@ -807,11 +794,10 @@ void print_apples(game_t* game, int nb_apple){
 	}
 }
 
-// Procédure permettant d'afficher des ennemies à l'écran
 void print_ennemies(game_t* game, int nb_ghost){
 	int rX=0, rY=0, i=0;
 
-	// ajout de "nb_ghost" ennemies dans une position aleatoire dans la zone de jeu et dans un espace vide
+	// ghost in a random place
 	for (i=0;i<nb_ghost;i++)
 	{
 	   do{
