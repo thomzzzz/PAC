@@ -1,6 +1,5 @@
 #include "obstacle.h"
 
-//creation d'obstacle
 obstacle_t obstacle_create(char obstacle_type, int x, int y)
 {
     obstacle_t obstacle;
