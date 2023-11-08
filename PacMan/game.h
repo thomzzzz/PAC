@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-// Librairie
+// Libraries
 #include <time.h>
 #include <math.h>
 #include <stdio.h>
@@ -35,82 +35,82 @@ typedef struct game_t {
     int obstacles_count;
 } game_t;
 
-// Procédure déplacant le curseur en (x,y)
+// move the cursor
 void gotoXY(int x, int y);
 
-// Fonction de Creation et d'initialisation de la struct Game
+// initialise the struct game
 game_t* game_create(int height, int width);
 
-// Procédure creant des bordures dans la matrice board
+// create the matrix
 void game_map(game_t* game);
 
-// Procédure creant un labyrinthe dans la matrice board
+// create the maze
 void game_maze(game_t* game);
 
-// Procédure permettant le deplacement du snake/pacman en donnant en parametre game et le deplacement (utile au game_keep_moving)
+// keeps the characters moving
 void game_move(game_t* game, position_t offset);
 
-// Procédure permettant un mouvement permanant dans la meme direction de la tete du snake
+// keep moving
 void game_keep_moving(game_t* game);
 
-// Procédure permettant à la tete du snake de monter
+// move up
 void game_up(game_t* game);
 
-// Procédure permettant à la tete du snake de descendre
+// move down
 void game_down(game_t* game);
 
-// Procédure permettant à la tete du snake de tourner à gauche
+// move left
 void game_left(game_t* game);
 
-// Procédure permettant à la tete du snake de tourner à droite
+// move right
 void game_right(game_t* game);
 
-// Procédure permettant l'agrandir la taille du snake
+// make the character bigger as the levels progress
 void game_snake_size_up(game_t* game);
 
-// Procédure permettant d'ajouter different type d'obstacles
+// obstacles
 void game_add_obstacle(game_t* game, obstacle_t obstacle);
 
-// Procédure permettant de couper la queue du snake à l'indice 'index' donné en parametre
+// to kill the character if it is touched by a different character other than P
 void game_snake_cut(game_t* game,int index);
 
-// Fonction renvoyant zero si pas de conctact entre snake et les obstacles sinon renvoie l'indice du contact
+// 0 if untouched, or else contact index is returned when clashing into obstacles
 int game_snake_hit_no_head(game_t* game, obstacle_t* obstacle);
 
-// Fonction renvoyent un booleen : true correspondant au snake mord ca queue sinon false
+// true if the game is over
 bool game_snake_hit_snake(game_t* game);
 
-// Procédure permettant de retirer l'obstacle [index]
+// removesobstacle
 void remove_obstable(game_t* game,int index);
 
-// Fonction renvoyent un booleen : true correspondant impact snake-obstacle (et memorize l'obstacle et l'index de l'obstacle)
+// returns the contact index
 bool game_has_hit(game_t* game, obstacle_t* obstacle,int* index);
 
-// Procédure permentant d'afficher le board à l'écran
+// full game display. very imp function
 void game_display(game_t* game);
 
-// Procédure librant l'espace allouer à la fin du jeu
+// free space at the end of a game
 void game_free(game_t* game);
 
-// Procédure qui compte le nombre de fois d'un obstacle touche un mur et stock cela pour chaque obstacle dans obstacle_hit_wall
+//how many times a wall was hit
 void check_obstacle_hit_wall (game_t* game);
 
-// Procédure permettant le mouvement de l'obstacles à l'indice 'index'
+//obstacle moving
 void game_obstacle_move( game_t* game, int index);
 
-// Procédure permettant le mouvement des obstacles avec un rapide sur 2
+// obstacle move at double speed 
 void game_obstacle_move_diverty( game_t* game , int ctr);
 
-// Fonction qui renvoie le minimum entre 4 distances (utile pour obstacle_tracking )
+// obstacle tracking measurement so that nothing clashes
 int minimun_distance_obstacle(int d1, int d2, int d3, int d4);
 
-// Procédure 'IA' placant dans la liste de direction 'track_direction_obstacles' les deplacements intelligent des obstacles
+//Obstacles tracking ai
 void obstacle_tracking(game_t* game);
 
-// Procédure permettant d'afficher des pommes à l'écran
+// fruit display
 void print_apples(game_t* game, int nb_apple);
 
-// Procédure permettant d'afficher des ennemies à l'écran
+// ghost display
 void print_ennemies(game_t* game, int nb_ghost);
 
 #endif /* end of include guard: GAME_H */
