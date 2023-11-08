@@ -1,7 +1,7 @@
 
 #include "menu.h"
 
-// Tableau d'affichage pour le menu d'entrée
+// Display array for the entry menu
 char menu[MAX][LARG] = {
 "\t ________________________________________________________________",
 "\t|                                                                |",
@@ -17,7 +17,7 @@ char menu[MAX][LARG] = {
 "\t|     ___________ uuuuuuu  uuuuu                                 |",
 "\t|   ____________ uuuuuuuu  uuuuuu                                |",
 "\t|   ___________ uuuuuuuuuuuu                                     |",
-"\t|     ________  uuuuuuuuuu   .   .  ~Appuyer sur une touche~  . .|",
+"\t|     ________  uuuuuuuuuu   .      .  ~Press any key~    .     .|",
 "\t|      ________ uuuuuuuuuuuu                                     |",
 "\t|        ________uuuuuuuuuuuuuuuu                                |",
 "\t|             ____ uuuuuuuuuuuuu                                 |",
@@ -25,26 +25,26 @@ char menu[MAX][LARG] = {
 "\t|________________________________________________________________|",
 "                                                                    ",
 "                                                                    ",
-"\t   ---ECE_PARIS---  Yven-SHUE  Marvin-MARTIN   Anthony-SARKIS     ",
+
 
 };
 
-// Tableau d'affichage pour les choix des options
+// Display array for the options menu
 char menu1[MAX][LARG] ={
 "\t ________________________________________________________________",
-"\t| haut => 8                                        droite => 6   |",
-"\t| bas  => 2                                        gauche => 4   |",
+"\t| up => 8                                           right => 6   |",
+"\t| down  => 2                                         left => 4   |",
 "\t|                                                                |",
 "\t|                _                                               |",
-"\t|               |_|   Demarrer une nouvelle partie               |",
+"\t|               |_|   Start a new game                           |",
 "\t|                _                                               |",
-"\t|               |_|   Reprendre la partie                        |",
+"\t|               |_|   Resume the game                            |",
 "\t|                _                                               |",
-"\t|               |_|   Choix de la difficulte                     |",
+"\t|               |_|   Choose difficulty                          |",
 "\t|                _                                               |",
-"\t|               |_|   Regles du jeu             _______________  |",
+"\t|               |_|   Game Rules                _______________  |",
 "\t|                _                             (_____________(o) |",
-"\t|      /|       |_|   Quitter le jeu           /           /     |",
+"\t|      /|       |_|   Quit                     /           /     |",
 "\t|      |/                                     /           /      |",
 "\t|      |/                                    /    MENU   /       |",
 "\t|      |/                                   /           /        |",
@@ -53,22 +53,22 @@ char menu1[MAX][LARG] ={
 "\t|________________________________________________________________|"
 };
 
-// Tableau d'affichage pour les choix des difficultés
+// Display array for the difficulty choices
 char menudiff[MAX][LARG] ={
 "\t ________________________________________________________________",
 "\t|                                                                |",
 "\t|                                                                |",
-"\t|           1. Vitesse de depart                                 |",
+"\t|           1. Starting speed                                    |",
 "\t|                _                                               |",
-"\t|               |_|  Pacman de vitesse lente                     |",
+"\t|               |_|  Slow Pacman                                 |",
 "\t|                _                                               |",
-"\t|               |_|  Pacman de vitesse moyenne (par defaut)      |",
+"\t|               |_|  Medium Pacman (defaut)                      |",
 "\t|                _                                               |",
-"\t|               |_|  Pacman de vitesse rapide                    |",
+"\t|               |_|  Fast Pacman                                 |",
 "\t|                                                                |",
-"\t|            2. Presence des bordures           _______________  |",
+"\t|            2.Borders                          _______________  |",
 "\t|                _                             (_____________(o) |",
-"\t|      /|       |_|  OFF (par defaut)          /           /     |",
+"\t|      /|       |_|  OFF (defaut)              /           /     |",
 "\t|      |/        _                            /           /      |",
 "\t|      |/       |_|  ON                      /  OPTION   /       |",
 "\t|      |/                                   /           /        |",
@@ -77,31 +77,31 @@ char menudiff[MAX][LARG] ={
 "\t|________________________________________________________________|"
 };
 
-// Tableau d'affichage pour les régles
+// Display array for the rules
 char menuregle[MAX][LARG] = {
 "\t ________________________________________________________________",
 "\t|                                                                |",
-"\t|                ~Bienvenu sur le jeux PACMAN~                   |",
+"\t|                ~Welcome to the PACMAN game~                    |",
 "\t|                                                                |",
-"\t|   En controllant pacman symbolisé par un X vous devrez manger  |",
-"\t|   un maximun de diamants mais attention au fur et a mesure que |",
-"\t|   vous avancerez la difficulte augmentera, des fontomes        |",
-"\t|   seront la pour vous barrer le passage mais bien heuresement  |",
-"\t|   vous aurez 5 vies pour vous en echapper. Pour les meilleurs  |",
-"\t|   d'entre vous qui auront le courage d'arriver a la fin vous   |",
-"\t|   vous challengerez dans un labyrinthe transforme en snake     |",
-"\t|   Bon jeux et attention a votre queue !       _______________  |",
+"\t|   By controlling Pacman, symbolized by an X, you will need to  |",
+"\t|   eat lots of diamonds But be careful, as you progress,the     |",
+"\t|   difficulty will increase, and ghosts will be there to block  |",
+"\t|   your path.Fortunately, you will have 5 lives to escape them  |",
+"\t|   For the best among you who have the courage to reach the end |",
+"\t|   you will challenge yourself in a maze transformed into       |",
+"\t|   a snake.                                                     |",
+"\t|   Enjoy the game, and watch out for your tail!_______________  |",
 "\t|                                              (_____________(o) |",
 "\t|      /|                                      /           /     |",
 "\t|      |/                                     /           /      |",
-"\t|      |/                                    /   REGLES  /       |",
+"\t|      |/                                    /    RULES  /       |",
 "\t|      |/                                   /           /        |",
-"\t|     _|_       ~Appuyer sur une touche~    /___________/        |",
+"\t|     _|_           ~Press any key~        /___________/         |",
 "\t|    (___)                                (__________(o)         |",
 "\t|________________________________________________________________|"
 };
 
-// Tableau d'affichage en cas de defaite
+// Display array in case of defeat
 char gameover[MAX][LARG] = {
 "\t ________________________________________________________________",
 "\t|                                                                |",
@@ -117,11 +117,11 @@ char gameover[MAX][LARG] = {
 "\t|                    &       &     &  &     &          &  &      |",
 "\t|        ____        & & & & &      &&      & & & &    &   &     |",
 "\t|      ,'    `,                                                  |",
-"\t|     /        \\                                                 |",
-"\t|     \\ ()  () /                                                 |",
-"\t|      `. /\\ ,'                                                  |",
-"\t|   8====| "" |====8                                               |",
-"\t|       `LLLU'             ~Appuyer sur une touche~              |",
+"\t|     /        \\                                                |",
+"\t|     \\ ()  () /                                                |",
+"\t|      `. /\\ ,'                                                 |",
+"\t|   8====| "" |====8                                             |",
+"\t|        `LLLU'                 ~Press any key~                  |",
 "\t|________________________________________________________________|"
 };
 
@@ -134,7 +134,7 @@ char tableau1[MAX][LARG] = {
 "\t|     ___________ uuuuuuu  uuuuu                                 |",
 "\t|   ____________ uuuuuuuu  uuuuuu                                |",
 "\t|   ___________ uuuuuuuuuuuu                                     |",
-"\t|     ________  uuuuuuuuuu   .   .   . ~ TABLEAU 1 ~  .   .   .  |",
+"\t|     ________  uuuuuuuuuu   .   .   . ~ TABLE 1 ~  .   .   .    |",
 "\t|      ________ uuuuuuuuuuuu                                     |",
 "\t|        ________uuuuuuuuuuuuuuuu                                |",
 "\t|             ____ uuuuuuuuuuuuu                                 |",
@@ -142,9 +142,9 @@ char tableau1[MAX][LARG] = {
 "\t|                                                                |",
 "\t|                                                                |",
 "\t|                                                                |",
-"\t|                 ~Apuyer sur une touche~                        |",
+"\t|                     ~Press any key~                            |",
 "\t|                                                                |",
-"\t| Saviez vous que la touche 'q' permet de quitter et 'p' pause ? |",
+"\t| The 'q' key is used to quit, and the 'p' key is used to pause. |",
 "\t|________________________________________________________________|",
 };
 
@@ -157,7 +157,7 @@ char tableau2[MAX][LARG] = {
 "\t|              uuuuuuuuuuuuu                                     |",
 "\t|             uu   uuuuu   uu                                    |",
 "\t|            uuu   uuuuu   uuu                                   |",
-"\t|            uuu O uuuuu O uuu  .  .  .  ~ TABLEAU 2 ~  .   .  . |",
+"\t|            uuu O uuuuu O uuu  .  .  .  ~ TABLE 2 ~  .   .  .   |",
 "\t|            uuuuuuuuuuuuuuuuu                                   |",
 "\t|            uu uuuuu uuuuu uu                                   |",
 "\t|            u   uuu   uuu   u                                   |",
@@ -166,7 +166,7 @@ char tableau2[MAX][LARG] = {
 "\t|                                                                |",
 "\t|                                                                |",
 "\t|                                                                |",
-"\t|                 ~Apuyer sur une touche~                        |",
+"\t|                     ~Press any key~                            |",
 "\t|                                                                |",
 "\t|________________________________________________________________|",
 };
@@ -181,7 +181,7 @@ char tableau3[MAX][LARG] = {
 "\t|              uuuuuuuuuuuuu                                     |",
 "\t|             uu   uuuuu   uu                                    |",
 "\t|            uuuO  uuuuuO  uuu                                   |",
-"\t|            uuu   uuuuu   uuu  .  .  .  ~ TABLEAU 3 ~  .   .  . |",
+"\t|            uuu   uuuuu   uuu  .  .  .  ~ TABLE 3 ~  .   .  .   |",
 "\t|            uuuuuuuuuuuuuuuuu                                   |",
 "\t|            uu uuuuu uuuuu uu                                   |",
 "\t|            u   uuu   uuu   u                                   |",
@@ -190,7 +190,7 @@ char tableau3[MAX][LARG] = {
 "\t|                                                                |",
 "\t|                                                                |",
 "\t|                                                                |",
-"\t|                 ~Appuyer sur une touche~                        |",
+"\t|                     ~Press any key~                            |",
 "\t|                                                                |",
 "\t|________________________________________________________________|",
 };
@@ -204,7 +204,7 @@ char tableau4[MAX][LARG] = {
 "\t|              uuuuuuuuuuuuu                                     |",
 "\t|             uu O uuuuu O uu                                    |",
 "\t|            uuu   uuuuu   uuu                                   |",
-"\t|            uuu   uuuuu   uuu  .  .  .  ~ TABLEAU 4 ~  .   .  . |",
+"\t|            uuu   uuuuu   uuu  .  .  .  ~ TABLE 4 ~  .   .  .   |",
 "\t|            uuuuuuuuuuuuuuuuu                                   |",
 "\t|            uu uuuuu uuuuu uu                                   |",
 "\t|            u   uuu   uuu   u                                   |",
@@ -213,7 +213,7 @@ char tableau4[MAX][LARG] = {
 "\t|                                                                |",
 "\t|                                                                |",
 "\t|                                                                |",
-"\t|                 ~Appuyer sur une touche~                       |",
+"\t|                      ~Press any key~                           |",
 "\t|                                                                |",
 "\t|________________________________________________________________|",
 };
