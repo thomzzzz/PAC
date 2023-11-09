@@ -260,8 +260,8 @@ void game_snake_size_up(game_t* game){
 
     game->snake_size++;
 
-	l_pos = game->snake_position[game->snake_size-2];//penser à que game->size a augmenté mais n'est pas encore actif sur les coordonnées d'ou le dernier est N-2
-	ll_pos = game->snake_position[game->snake_size-3];//penser à que game->size a augmenté mais n'est pas encore actif sur les coordonnées d'ou l'avant dernier est N-3
+	l_pos = game->snake_position[game->snake_size-2];
+	ll_pos = game->snake_position[game->snake_size-3];
 
 	game->snake_position = realloc(game->snake_position, game->snake_size*sizeof(position_t));
 
@@ -482,7 +482,6 @@ void check_obstacle_hit_wall (game_t* game){
 			}
 		}
 		if (game->direction_obstacles->y==1 || game->direction_obstacles->y==-1){
-			// verifie s'il y a un mur au dessus de lui, si oui, augmente de 1 obstacle_hit_wall
 			if (game->board[game->obstacles[i].pos.y+1][game->obstacles[i].pos.x] != ' '
 			&& game->board[game->obstacles[i].pos.y+1][game->obstacles[i].pos.x] != game->obstacles->obstacle_type
 			&& game->board[game->obstacles[i].pos.y+1][game->obstacles[i].pos.x] != SNAKE_CHAR){
@@ -540,7 +539,6 @@ void game_obstacle_move( game_t* game, int index){
 				offset.y= -random_offset.y;
             }
 			else if(game->level>2){
-					// cas IA pas besoin de rebondir
 				offset.x= track_offset.x;
 				offset.y= track_offset.y;
             }
@@ -662,22 +660,18 @@ void obstacle_tracking(game_t* game){
 			dist_under=sqrt(pow((obs_x-snake_pos_x),2)+pow((obs_y_under-snake_pos_y),2));
 
 			if (minimun_distance_obstacle(dist_right,dist_left,dist_over,dist_under)==dist_right) {
-				// alors la direction optimale est vers la droite donc déplacement (x=1, y=0)
 				opt_dir=position_create(1,0);
 
 			}
 			else if (minimun_distance_obstacle(dist_right,dist_left,dist_over,dist_under)==dist_left) {
-				// alors la direction optimale est vers la gauche donc déplacement (x=-1, y=0)
 				opt_dir=position_create(-1,0);
 
 			}
 			else if (minimun_distance_obstacle(dist_right,dist_left,dist_over,dist_under)==dist_over) {
-				// alors la direction optimale est vers le haut donc déplacement (x=0, y=-1)
 				opt_dir=position_create(0,-1);
 
 			}
 			else if (minimun_distance_obstacle(dist_right,dist_left,dist_over,dist_under)==dist_under) {
-				// alors la direction optimale est vers le bas donc déplacement (x=0, y=1)
 				opt_dir=position_create(0,1);
 
 			}
