@@ -1,22 +1,21 @@
 #include "niveaux.h"
 
 
-// Procédure permettant de un pause en miliseconde
+//pausing every milisecond
 void delay(int number_of_miliseconds){
 	clock_t start_time = clock();
 	while (clock() < start_time + number_of_miliseconds);
 }
 
-// Procédure permettant de sauvegarder dans un fichier le niveau et la vie
+// registering the life and level at every checkpoint. it is saved in save.txt
 void save(game_t* game){
 
-	//variable (pointer)
+	
     FILE *file;
 
-	// ouverture du mode fichier en mode ecriture
+	
     file = fopen("save.txt", "w");
 
-    // Traitement de l'erreur d'ouverture du fichier
     if ( file == NULL)
     {
         printf("Impossible d'ouvrir en ecriture\n");
@@ -24,7 +23,6 @@ void save(game_t* game){
     }
     else // ouverture du fichier reussie
     {
-		// impression des donnees (level sur la premier ligne et life sur la ligne)
 		fprintf(file, "%d\n", game->level);
 		fprintf(file, "%d", game->life);
 
@@ -40,24 +38,19 @@ int read_save(int index){
 	int level[2];
 
 
-    // ouverture du mode fichier en mode lecture
     file = fopen("save.txt", "r");
 
-    // Traitement de l'erreur d'ouverture du fichier
     if ( file == NULL)
     {
         printf("Impossible d'ouvrir en lecture\n");
 
     }
-    else // ouverture du fichier réussie
+    else 
     {
-		// recuperation des donnees dans la liste
 		fscanf(file,"%d",&level[0]);
 		fscanf(file,"\n%d",&level[1]);
-		// fermeture du fichier
     	fclose(file);
 	}
-	// revoyant le level si parametre est 1 et life si 2
 	if (index==0){
 		return level[0];
 	}
@@ -66,7 +59,6 @@ int read_save(int index){
 	}
 }
 
-//Procédure remplissant d'espace le board (nettoyage)
 void clear_board(game_t* game){
 
 		for (int j=0; j<game->dimension.y;j++)
@@ -125,11 +117,11 @@ void niveaux(game_t* game, int vitesse)
 
 	do{
 
-		save(game);    // sauvegarde du jeu
+		save(game);    
         duree++;
 		can_keep_moving=1;
 
-        if (kbhit()){                       // deplacement du pac-man
+        if (kbhit()){                       
 			touch = getch();
 
             if(touch=='2'){
@@ -161,17 +153,16 @@ void niveaux(game_t* game, int vitesse)
 
 		check_obstacle_hit_wall(game);      //check borders
 
-		game_display(game);             //affichage du jeu
-
+		game_display(game);            
 
 
 		//check head contact
         if(game_has_hit(game,&hit,&index_obs_hit)){
-			if(hit.obstacle_type=='E'){                 //perte de vie
+			if(hit.obstacle_type=='E'){                 
 
 				game->life--;
 			}
-			if(hit.obstacle_type=='P'){                 //augmentation du score
+			if(hit.obstacle_type=='P'){                
 				remove_obstable(game, index_obs_hit);
                 score+=10;
             }
@@ -183,7 +174,7 @@ void niveaux(game_t* game, int vitesse)
             getch();
             return;}
 
-		if (score>=(nb_apple*10)){game->level=2;}   // passage au niveau suivant
+		if (score>=(nb_apple*10)){game->level=2;}   //next level
 
 
 		gotoXY(10,3);
@@ -219,16 +210,15 @@ void niveaux(game_t* game, int vitesse)
 
 
 
-	// si tableau 2
 	if (game->level == 2){
         system("cls");
-        affichetableau2(); // afiche écran de transistion
+        affichetableau2(); 
         getch();
         system("cls");
         vitesse=orignal_speed;
 		score=50;
-        print_ennemies(game, nb_gost); //affiche les fantomes
-        print_apples(game, nb_apple); // affiche les pomme
+        print_ennemies(game, nb_gost); 
+        print_apples(game, nb_apple); 
         //repositionnement du X
         game->board[game->snake_position[0].y][game->snake_position[0].x]=' ';
         do{
@@ -239,27 +229,27 @@ void niveaux(game_t* game, int vitesse)
 
     do {
 
-		save(game); // sauvegarder tableau 2
+		save(game); 
         duree++;
-		can_keep_moving=1; // continuer mouvement
+		can_keep_moving=1; 
 
         if (kbhit()){
-			touch = getch(); // entrée clavier
+			touch = getch(); 
 
             if(touch=='2'){
-				can_keep_moving=0; //arret
-            	game_down(game);	// descente
+				can_keep_moving=0; 
+            	game_down(game);	
             } else if(touch=='8'){
 				can_keep_moving=0;
-            	game_up(game);		//monter
+            	game_up(game);		
             } else if(touch=='6'){
 				can_keep_moving=0;
-            	game_right(game);	//droite
+            	game_right(game);	
             } else if(touch=='4'){
 				can_keep_moving=0;
-            	game_left(game);	//gauche
+            	game_left(game);	
             } else if(touch=='p'){
-                getch();			//pause
+                getch();			
             }else if(touch=='q'){
 				free(game);			//quitter
                 system("cls");
@@ -284,16 +274,16 @@ void niveaux(game_t* game, int vitesse)
 
 		//check head contact
         if(game_has_hit(game,&hit,&index_obs_hit)){
-			if(hit.obstacle_type=='E'){ // si on est sur un fantome
-				game->life--; // retire 1 point de vie
+			if(hit.obstacle_type=='E'){ 
+				game->life--;
 			}
-			if(hit.obstacle_type=='P'){ // si on est sur une pomme
+			if(hit.obstacle_type=='P'){ 
 				remove_obstable(game, index_obs_hit);
                 score+=10; // ajoute 10 de score
 
             }
 		}
-		 if (game->life==0){ // si vie = 0
+		 if (game->life==0){ 
             system("cls");
             affichegameover();// afficher l ecran de game over
             getch();
@@ -301,8 +291,8 @@ void niveaux(game_t* game, int vitesse)
 
 		if (score>=(20*nb_apple)){game->level=3;}
 
-// affichage du niveau vie et score
-		gotoXY(10,3); // placer a la position ligne 3
+
+		gotoXY(10,3); 
 		printf(" ___________");
 		gotoXY(10,4);
 		printf("|");
@@ -325,13 +315,9 @@ void niveaux(game_t* game, int vitesse)
         Color(12,0);
         printf("|");
 
-        delay(vitesse);	//attente
+        delay(vitesse);	
 		ctr++;
-	}while (game->level==2); // tant qu'on est sur le tableau 2
-
-
-
-
+	}while (game->level==2); 
 
 	if (game->level==3){
         system("cls");
@@ -339,7 +325,7 @@ void niveaux(game_t* game, int vitesse)
         getch();
         system("cls");
 
-        game_maze(game);                    //creation des murs
+        game_maze(game);                    
 		score=100;
 
         print_apples(game, nb_apple);
@@ -391,16 +377,13 @@ void niveaux(game_t* game, int vitesse)
 		obstacle_tracking(game);
 
 
-		// si aucune pomme manger � la frenquence d'apparition des obstacles de change pas : vitesse constante
-			// dans se cas ctr_for_snake=1 et donc ctr%1=0
+		
 		if (ctr % ctr_for_snake == 0){
-			// faire bouger tous des obstacles � vitesse differente
 			game_obstacle_move_diverty(game, ctr);
 		}
-		//Ralentir les obstacles quand le snake mange une pomme (en meme temps la vitesse de la loop augmente)
-			// Ne afficher les obstacles � chaque boucle realiser, la frequence d�pend de ctr_for_snake qui depend du nb de pommes manger
+		//speed of pacman increases every time he eats a fruit
 		if (ctr % ctr_for_snake == 1){
-			// faire bouger tous des obstacles � vitesse differente
+			//ghost move faster as well
 			game_obstacle_move_diverty(game, ctr);
 		}
 
@@ -491,7 +474,7 @@ void niveaux(game_t* game, int vitesse)
 
 
 		if (duree%15==0){
-			for (i=0;i<3;i++){     //spawn temporaire des yukunkun
+			for (i=0;i<3;i++){    
 		        do{
 				rX = randomX(width);
 				rY = randomY(height);
@@ -500,7 +483,7 @@ void niveaux(game_t* game, int vitesse)
 		        }
 		}
 
-        if (duree%25==1){          //disparition des yukunkun
+        if (duree%25==1){         
             for (int i=0; i<game->obstacles_count; i++){
                 if(game->obstacles[i].obstacle_type=='*'){
                     game->board[game->obstacles[i].pos.y][game->obstacles[i].pos.x]=' ';
@@ -548,16 +531,13 @@ void niveaux(game_t* game, int vitesse)
 		check_obstacle_hit_wall(game);
 		obstacle_tracking(game);
 
-		// si aucune pomme manger � la frenquence d'apparition des obstacles de change pas : vitesse constante
-			// dans se cas ctr_for_snake=1 et donc ctr%1=0
+		//speed is the same if no fruit is eaten
 		if (ctr % ctr_for_snake == 0){
-			// faire bouger tous des obstacles � vitesse differente
+			
 			game_obstacle_move_diverty(game, ctr);
 		}
-		//Ralentir les obstacles quand le snake mange une pomme (en meme temps la vitesse de la loop augmente)
-			// Ne afficher les obstacles � chaque boucle realiser, la frequence d�pend de ctr_for_snake qui depend du nb de pommes manger
+		
 		if (ctr % ctr_for_snake == 1){
-			// faire bouger tous des obstacles � vitesse differente
 			game_obstacle_move_diverty(game, ctr);
 		}
 
@@ -587,7 +567,7 @@ void niveaux(game_t* game, int vitesse)
             }
 		}
 
-		if (dub==5){ ;          // si toute les pommes sont mangees, fin de la partie
+		if (dub==5){ ;        
 		game->level=1;
 		printf("\tVICTORY");
 		nb_apple*=2;
@@ -600,7 +580,7 @@ void niveaux(game_t* game, int vitesse)
 
 
 		//check body contact
-		if(game_snake_hit_no_head(game,&hit)!=0){    //les ennemies coupent la queue du snake
+		if(game_snake_hit_no_head(game,&hit)!=0){    
 			if(hit.obstacle_type=='E'){
 				// cut the snake at the impact position
 				game_snake_cut(game,game_snake_hit_no_head(game,&hit));
