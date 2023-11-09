@@ -2,7 +2,7 @@
 #include <time.h>
 #include "game.h"
 #include <math.h>
-#include "niveaux.h"
+#include "levels.h"
 #include "menu.h"
 
 

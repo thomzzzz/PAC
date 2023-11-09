@@ -222,235 +222,231 @@ char tableau4[MAX][LARG] = {
 void affichetableau1(){
 
     int i,j;
-    for(i=0;i<MAX;i++) // Affichage des lignes
+    for(i=0;i<MAX;i++) 
     {
-        for(j=0;j<LARG;j++) // Affichage des colonnes
+        for(j=0;j<LARG;j++) 
         {
-              if (i >= 2 && i<=14 && j >=2 && j<=33 ) // Condition pour l'interieur du cadre
+              if (i >= 2 && i<=14 && j >=2 && j<=33 ) 
             {
-                Color(14,0); // couleur du texte en Jaune
-                printf("%c",tableau1[i][j]); // Affichage de l'interieur du cadre
-                Color(12,0); // Retour a la couleur initial (rouge)
+                Color(14,0); 
+                printf("%c",tableau1[i][j]); 
+                Color(12,0); 
             }
 
             else if (i>= 17 && i<=18 && j >=2 && j<=65)
             {
-                Color(5,0); // couleur du texte en pourpre
-                printf("%c",tableau1[i][j]); // Affichage de l'interieur du cadre
-                Color(12,0); // Retour a la couleur initial (rouge)
+                Color(5,0); 
+                printf("%c",tableau1[i][j]); 
+                Color(12,0); 
             }
             else { // pour le reste
-                printf("%c",tableau1[i][j]); // Affichage du cadre
+                printf("%c",tableau1[i][j]); 
             }
 
         }
-        printf("\n"); // Retour a la ligne
+        printf("\n"); 
     }
 }
 
 void affichetableau2(){
 
     int i,j;
-    for(i=0;i<MAX;i++) // Affichage des lignes
+    for(i=0;i<MAX;i++) 
     {
-        for(j=0;j<LARG;j++) // Affichage des colonnes
+        for(j=0;j<LARG;j++) 
         {
-              if (i >= 2 && i<=14 && j >=2 && j<=32 ) // Condition pour l'interieur du cadre
+              if (i >= 2 && i<=14 && j >=2 && j<=32 )
             {
-                Color(5,0); // couleur du texte en pourpre
-                printf("%c",tableau2[i][j]); // Affichage de l'interieur du cadre
-                Color(12,0); // Retour a la couleur initial (rouge)
+                Color(5,0); 
+                printf("%c",tableau2[i][j]); 
+                Color(12,0); 
             }
-            else { // pour le reste
-                printf("%c",tableau2[i][j]); // Affichage du cadre
+            else { 
+                printf("%c",tableau2[i][j]); 
             }
 
         }
-        printf("\n"); // Retour a la ligne
+        printf("\n"); 
     }
 }
 void affichetableau3(){
 
     int i,j;
-    for(i=0;i<MAX;i++) // Affichage des lignes
+    for(i=0;i<MAX;i++) 
     {
-        for(j=0;j<LARG;j++) // Affichage des colonnes
+        for(j=0;j<LARG;j++) 
         {
-              if (i >= 2 && i<=14 && j >=2 && j<=32 ) // Condition pour l'interieur du cadre
+              if (i >= 2 && i<=14 && j >=2 && j<=32 ) 
             {
-                Color(6,0); // couleur du texte en kaki
-                printf("%c",tableau3[i][j]); // Affichage de l'interieur du cadre
-                Color(12,0); // Retour a la couleur initial (rouge)
+                Color(6,0);
+                printf("%c",tableau3[i][j]); 
+                Color(12,0);
             }
-            else { // pour le reste
-                printf("%c",tableau3[i][j]); // Affichage du cadre
+            else { 
+                printf("%c",tableau3[i][j]); 
             }
 
         }
-        printf("\n"); // Retour a la ligne
+        printf("\n"); 
     }
 }
 
 void affichetableau4(){
 
     int i,j;
-    for(i=0;i<MAX;i++) // Affichage des lignes
+    for(i=0;i<MAX;i++) 
     {
-        for(j=0;j<LARG;j++) // Affichage des colonnes
+        for(j=0;j<LARG;j++) 
         {
-              if (i >= 2 && i<=14 && j >=2 && j<=32 ) // Condition pour l'interieur du cadre
+              if (i >= 2 && i<=14 && j >=2 && j<=32 ) 
             {
-                Color(11,0); // couleur du texte en truquoise
-                printf("%c",tableau4[i][j]); // Affichage de l'interieur du cadre
-                Color(12,0); // Retour a la couleur initial (rouge)
+                Color(11,0); 
+                printf("%c",tableau4[i][j]); 
+                Color(12,0); 
             }
-            else { // pour le reste
-                printf("%c",tableau4[i][j]); // Affichage du cadre
+            else { 
+                printf("%c",tableau4[i][j]); 
             }
 
         }
-        printf("\n"); // Retour a la ligne
+        printf("\n"); 
     }
 }
 
 
 
-// Fonction d'affichage du tableau game over
 void affichegameover(){
 
     int i,j;
-    for(i=0;i<MAX;i++) // Affichage des lignes
+    for(i=0;i<MAX;i++) 
     {
-        for(j=0;j<LARG;j++) // Affichage des colonnes
+        for(j=0;j<LARG;j++)
         {
-              if (i >= 3 && i<=5 && j >=2 && j<=65 ) // condition pour le 'game'
+              if (i >= 3 && i<=5 && j >=2 && j<=65 ) 
             {
-                Color(14,0); // couleur texte en jaune
-                printf("%c",gameover[i][j]); // Affichage
-                Color(12,0); // retour a la couleur de base qui est rouge
+                Color(14,0); 
+                printf("%c",gameover[i][j]);
+                Color(12,0); 
             }
 
-            else if (i >= 9 && i<=11 && j >=2 && j<=65 ) // Condition pour le 'over'
+            else if (i >= 9 && i<=11 && j >=2 && j<=65 ) 
             {
 
-                Color(14,0); // couleur texte en jaune
-                printf("%c",gameover[i][j]); // Affichage
-                Color(12,0); // retour a la couleur de base qui est rouge
+                Color(14,0);
+                printf("%c",gameover[i][j]); 
+                Color(12,0); 
             }
 
-            else if (i >= 10 && i<=18 && j >=2 && j<=19 ) // Condition pour la téte de mort
+            else if (i >= 10 && i<=18 && j >=2 && j<=19 ) 
             {
 
-                Color(14,0); // couleur texte en jaune
-                printf("%c",gameover[i][j]); // Affichage
-                Color(12,0); // retour a la couleur de base qui est rouge
+                Color(14,0); 
+                printf("%c",gameover[i][j]); 
+                Color(12,0); 
             }
-            else // Pour le reste du tableau
+            else 
             {
-                printf("%c",gameover[i][j]); // Affichage
+                printf("%c",gameover[i][j]);
             }
 
         }
-        printf("\n"); // retour à la ligne
+        printf("\n"); 
     }
 }
 
-// Fonction pour la couleur avec 2 paramétre le texte et le fond
 void Color(int colorTexte,int colorFond){
         HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleTextAttribute(H,colorFond*16+colorTexte); // 16 couleurs pour chaque paramétre
+        SetConsoleTextAttribute(H,colorFond*16+colorTexte); 
 }
 
-// Fonction pour le positionnement du curseur avec 2 paramétre x (abscisse) et y (ordonée)
 void Locate(int x,int y){
-    HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE); // récupére un descripteur sur le périphérique de sortie (index de l'entrée)
-    COORD C; // coordonnée
+    HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD C; 
     C.X=(SHORT)x;
     C.Y=(SHORT)y;
-    SetConsoleCursorPosition(H,C); // repositionner le curseur en fonction du descripteur et de la coordonnée
+    SetConsoleCursorPosition(H,C); 
 }
- // Fonction d'affichage du tableau d'entrée de jeux
 void affiche(){
 
     int i,j;
-    for(i=0;i<MAX;i++) // Affichage des lignes
+    for(i=0;i<MAX;i++)
     {
-        for(j=0;j<LARG;j++) // Affichage des colonnes
+        for(j=0;j<LARG;j++) 
         {
-              if (i >= 2 && i<=18 && j >=2 && j<=65 ) // Condition pour l'interieur du cadre
+              if (i >= 2 && i<=18 && j >=2 && j<=65 ) 
             {
-                Color(14,0); // couleur du texte en Jaune
-                printf("%c",menu[i][j]); // Affichage de l'interieur du cadre
-                Color(12,0); // Retour a la couleur initial (rouge)
+                Color(14,0); 
+                printf("%c",menu[i][j]); 
+                Color(12,0); 
             }
-            else { // pour le reste
-                printf("%c",menu[i][j]); // Affichage du cadre
+            else { 
+                printf("%c",menu[i][j]); 
             }
 
         }
-        printf("\n"); // Retour a la ligne
+        printf("\n"); 
     }
 }
 
- // Fonction d'affichage du tableau des regles
+
 void afficheregle(){
 
     int i,j;
-    for(i=0;i<MAX;i++)// Affichage des lignes
+    for(i=0;i<MAX;i++)
     {
-        for(j=0;j<LARG;j++) // Affichage des colonnes
+        for(j=0;j<LARG;j++) 
         {
-             if (i >= 13 && i<=18 && j >=2 && j<=11 ) // Condition pour le texte des regles
+             if (i >= 13 && i<=18 && j >=2 && j<=11 ) 
             {
-                Color(14,0); // Texte de couleur jaune
-                printf("%c",menuregle[i][j]); // Affichage du decor "plume"
-                Color(12,0);  // Retour a la couleur initial (rouge)
+                Color(14,0); 
+                printf("%c",menuregle[i][j]);
+                Color(12,0);  
             }
             else if (i >= 11 && i<=18 && j >=43 && j<=64 )
             {
 
-                Color(14,0); // Texte de couleur jaune
-                printf("%c",menuregle[i][j]); // Affichage du decor "papier rouleau"
-                Color(12,0);  // Retour a la couleur initial (rouge)
+                Color(14,0); 
+                printf("%c",menuregle[i][j]); 
+                Color(12,0);  
             }
 
-            else { // pour le reste
-                printf("%c",menuregle[i][j]); // Affichage du cadre + texte
+            else { 
+                printf("%c",menuregle[i][j]); 
             }
         }
-        printf("\n"); // retourn a la ligne
+        printf("\n");
     }
 }
 
 void Afficher(int x,int y){
 
     int i,j;
-    Locate(0,0); // appel de fonction pour la localisation du curseur
-    for(i=0;i<MAX;i++) // Affichage des lignes
+    Locate(0,0);
+    for(i=0;i<MAX;i++) 
     {
-        for(j=0;j<LARG;j++) // Affichage des colonnes
+        for(j=0;j<LARG;j++) 
         {
-            if (i==x && j==y) // si on est sur les coordonnes du curseur
+            if (i==x && j==y) 
             {
-                Color(14,0); // Texte de couleur jaune
-                printf("X"); // Afichage du curseur
-                Color(12,0);// Retour a la couleur initial (rouge)
+                Color(14,0); 
+                printf("X"); 
+                Color(12,0);
             }
             else if (i >= 13 && i<=18 && j >=2 && j<=11 )
             {
-                Color(14,0);// Texte de couleur jaune
-                printf("%c",menu1[i][j]); // Affichage du decor "plume"
-                Color(12,0);// Retour a la couleur initial (rouge)
+                Color(14,0);
+                printf("%c",menu1[i][j]); 
+                Color(12,0);
             }
             else if (i >= 11 && i<=18 && j >=40 && j<=64 )
             {
 
-                Color(14,0);// Texte de couleur jaune
-                printf("%c",menu1[i][j]); // Affichage du decor "papier rouleau"
-                Color(12,0);// Retour a la couleur initial (rouge)
+                Color(14,0);
+                printf("%c",menu1[i][j]); 
+                Color(12,0);
             }
-            else // pour le reste
-                printf("%c",menu1[i][j]); // Affichage du cadre + texte
+            else 
+                printf("%c",menu1[i][j]); 
 
 
         }
@@ -461,124 +457,118 @@ void Afficher(int x,int y){
 void affichediff(int x,int y){
 
     int i,j;
-    Locate(0,0); // appel de fonction pour la localisation du curseur
-    for(i=0;i<MAX;i++) // Affichage des lignes
+    Locate(0,0); 
+    for(i=0;i<MAX;i++) 
     {
-        for(j=0;j<LARG;j++)// Affichage des colonnes
+        for(j=0;j<LARG;j++)
         {
-            if (i==x && j==y) // si on est sur les coordonnes du curseur
+            if (i==x && j==y) 
             {
-                Color(14,0);// Texte de couleur jaune
-                printf("X"); // Afichage du curseur
-                Color(12,0);// Retour a la couleur initial (rouge)
+                Color(14,0);
+                printf("X"); 
+                Color(12,0);
             }
             else if (i >= 13 && i<=18 && j >=2 && j<=11 )
             {
-                Color(14,0);// Texte de couleur jaune
-                printf("%c",menudiff[i][j]); // Affichage du decor "plume"
-                Color(12,0);// Retour a la couleur initial (rouge)
+                Color(14,0);
+                printf("%c",menudiff[i][j]); 
+                Color(12,0);
             }
             else if (i >= 11 && i<=18 && j >=40 && j<=64 )
             {
 
-                Color(14,0);// Texte de couleur jaune
-                printf("%c",menudiff[i][j]); // Affichage du decor "papier rouleau"
-                Color(12,0);// Retour a la couleur initial (rouge)
+                Color(14,0);
+                printf("%c",menudiff[i][j]); 
+                Color(12,0);
             }
-            else // pour le reste
+            else 
                 printf("%c",menudiff[i][j]);
         }
-        printf("\n"); // retour a la ligne
+        printf("\n"); 
     }
 }
 
-// Fonction pour empecher le deplacement en dehors des cases sur le tableau du menu
 void TryMove(int* x,int* y,int vx,int vy){
 
-    if (menu1[*x+vx][*y+vy]=='|') // pour empecher le deplacement à droite ou gauche si présence de '|'
-        return; // sortie
+    if (menu1[*x+vx][*y+vy]=='|') 
+        return; 
 
     (*x)+=vx;
     (*y)+=vy;
 }
 
-// Fonction pour empecher le deplacement en dehors des cases sur le tableau des difficultées
 void TryMovediff(int* x,int* y,int vx,int vy){
 
-    if (menudiff[*x+vx][*y+vy]=='|') // pour empecher le deplacement à droite ou gauche si présence de '|'
-        return; // sortie
+    if (menudiff[*x+vx][*y+vy]=='|') 
+        return; 
 
     (*x)+=vx;
     (*y)+=vy;
 }
 
-// Fonction pour le deplacement sur le tableau du menu
 void mouvement(char touche,int* x, int* y){
-            switch(touche) // en fonction de la touche recu
+            switch(touche) 
          {
-            case '8': // si on appuie sur la touche '8'
-            TryMove(x,y,-2,0); // on monte en haut (x = -2 pour la case qui sera à 2 lignes au dessus)
-            break; // sortie de condition
+            case '8': 
+            TryMove(x,y,-2,0); 
+            break; 
 
-            case '2': // si on appuie sur la touche '2'
-            TryMove(x,y,2,0); // on descend en bas (x = 2 pour la case qui sera à 2 lignes en dessous)
-            break; // sortie de condition
+            case '2': 
+            TryMove(x,y,2,0); 
+            break; 
         }
 }
 
-// Fonction pour le deplacement sur le tableau des difficultées
 void mouvementdiff(char touche,int* x, int* y){
-            switch(touche) // en fonction de la touche recu
+            switch(touche) 
          {
 
-            case '8': // si on appuie sur la touche '8'
-            TryMovediff(x,y,-2,0); // on monte en haut (x = -2 pour la case qui sera à 2 lignes au dessus)
-            break; // sortie de condition
+            case '8':
+            TryMovediff(x,y,-2,0); 
+            break; 
+            case '2': 
+            TryMovediff(x,y,2,0);
+            break; 
 
-            case '2': // si on appuie sur la touche '2'
-            TryMovediff(x,y,2,0); // on descend en bas (x = 2 pour la case qui sera à 2 lignes en dessous)
-            break; // sortie de condition
-
-#define MAX 23 // on définit le tableau de 23 lignes
-#define LARG 69 // et 69 colonnes
+#define MAX 23 
+#define LARG 69 
         }
 }
 
-// fonction pour l'ensemble du menu
 void menu_fct(game_t* game){
 
-    int vitesse=100; // vitesse de base réglé sur moyenne
-    int bord=0; // Bordure réglé sur off de base
+    int vitesse=100; 
+    int bord=0; 
     int height = 20,width = 50;
     int nb_ghost=4;
 
-    Color(12,0);// Texte de couleur rouge
-    affiche(); // Appel de la fonction d'affichage pour le début de jeu
-    int x = 5; // Positionnement du curseur sur la ligne 5
-    int y = 18; // et sur la colonne 18
-    char touche = 0; // Initialisation de la variable pour l'entrée du clavier
-    touche = getch(); // La variable est affecté a l'entrée de sortie (du clavier)
-    if (touche){ // Condition de si la variable a recu une entrée (si une touche a été appuyé)
+    Color(12,0);
+    affiche(); 
+    int x = 5; 
+    int y = 18; 
+    char touche = 0;
+    touche = getch(); 
+    if (touche){ 
 
-        system("cls");                  // Effacer l'affichage précedent
-        while(touche!=27){               // Boucle tant que la touche echape n'est pas pressé
-           Afficher(x,y);               // Appel de la fonction d'affichage pour le menu
-           if(kbhit){               // si une touche a été touché et donc en attente de la lecture du caractére
-               touche = getch();                // On réafecte l'entrée a la variable "touche"
+        system("cls");                  
+        while(touche!=27){               
+           Afficher(x,y);               
+           if(kbhit){               
+               touche = getch();                
             }
-            mouvement(touche,&x,&y);                // Déplacement du curseur en fonction de la touche pressé et des coordonnées
-            if (x==15){x=5;}                 // Condition pour si le curseur descend en dessous de la derniere case autorisé il remonte automatiquement
-            if (x==3){x=13;}                // et inversement pour au dessus il redescend
-            if(x == 13 && touche =='\r' ){               // si l'utilisateur appuie sur "entrer" quand le curseur est sur la case "quitter le jeu"
-                return EXIT_SUCCESS;                 // on arrete le programme
+            mouvement(touche,&x,&y);                
+            if (x==15){x=5;}                 
+            if (x==3){x=13;}                
+            if(x == 13 && touche =='\r' ){              
+                return EXIT_SUCCESS;                 
             }
 
 
 
-            if (x== 5  &&  touche=='\r'){ // Si l'utilisateur appuie sur "entrer" quand le curseur est sur la premiere case "nouvelle partie"
-                 game_t* game = game_create(height,width); // niveau reglé sur tableau 1
+            if (x== 5  &&  touche=='\r'){ 
+                 game_t* game = game_create(height,width); 
                 game->level=1;
-                game->life=5; // vie reglé sur 5
+                game->life=5; 
                 game->border=bord;
 
                 niveaux(game,vitesse);}
@@ -586,9 +576,8 @@ void menu_fct(game_t* game){
 
 
 
-            // Si l'utilisateur appuie sur "entrer" quand le curseur est sur la deuxiéme case "reprendre partie"
             if (x==  7 &&   touche=='\r'){
-                game_t* game = game_create(height,width); // On commence le jeux avec le tableau et la vie de la précedente partie
+                game_t* game = game_create(height,width); 
 
                 game->level=read_save(0);
                 game->life=read_save(1);
@@ -597,69 +586,66 @@ void menu_fct(game_t* game){
                 niveaux(game,vitesse);}
 
 
-            if(x == 11 && touche =='\r' ){              // Si l'utilisateur appuie sur "entrer" quand le curseur est sur la quatriéme case "Regles"
+            if(x == 11 && touche =='\r' ){              
 
-                system("cls");           //Effacer l'affichange précedent
-                afficheregle(x,y);          // Appel de la fonction d'affichage pour les regles
+                system("cls");           
+                afficheregle(x,y);          
+                 while(touche!=121){             
+                     if (touche){                
 
-                 while(touche!=121){             // Boucle tant que la touche y n'est pas pressé
-                     if (touche){                // Condition de si la variable a recu une entrée (si une touche a été appuyé)
-
-                        touche = getch();                // On réafecte l'entrée à la variable "touche"
-                        touche = 121;                    // On sort de la boucle en attribuant y a la variable "touche"
+                        touche = getch();                
+                        touche = 121;                    
                      }
                  }
             }
 
-            if(x == 9 && touche =='\r' ){                        // Si l'utilisateur appuie sur "entrer" quand le curseur est sur la troisiéme case "choix de la difficulté"
-                x=5 ;                                   // Positionnement du curseur sur la ligne 5
-                y=18;                               // et sur la colonne 18
+            if(x == 9 && touche =='\r' ){                       
+                x=5 ;                                   
+                y=18;                             
 
-                while(touche!=126){                                              // Boucle tant que la touche 'DEL' n'est pas pressé
-                    affichediff(x,y);                                       // Appel de la fonction d'affichage pour le choix des difficultés
-                    touche = getch();                                                       // On réafecte l'entrée à la variable "touche"
-                    mouvementdiff(touche,&x,&y);                                                // Déplacement du curseur en fonction de la touche pressé et des coordonnées
-                    if (x==11){x=5;}                                                 // Condition pour si le curseur descend en dessous de la derniere case autorisé il remonte automatiquement
-                    if (x==3){x=9;}                                              // et inversement pour au dessus il redescend
+                while(touche!=126){                                             //as long as del isn't pressed
+                    affichediff(x,y);                                       
+                    touche = getch();                                                     
+                    mouvementdiff(touche,&x,&y);                                                
+                    if (x==11){x=5;}                                               
+                    if (x==3){x=9;}                                            
+                    int choix =0; 
 
-                    int choix =0; // Variable initialisé pour les choix (qui servira a rentrer dans la condition des bordures)
+                    if(x == 5 && touche == '\r' ){ 
+                        choix = 1; 
+                        vitesse=200;} 
 
-                    if(x == 5 && touche == '\r' ){ // Si l'utilisateur appuie sur "entrer" quand le curseur est sur la premiére case "vitesse lente"
-                        choix = 1; // Choix vraie
-                        vitesse=200;} // vitesse à 200
+                    if(x == 7 && touche == '\r' ) { 
+                        choix = 1;
+                        vitesse=100;} 
 
-                    if(x == 7 && touche == '\r' ) { // Si l'utilisateur appuie sur "entrer" quand le curseur est sur la deuxieme case "vitesse moy"
-                        choix = 1; // Choix vraie
-                        vitesse=100;} // vitesse à 100
+                    if(x == 9 && touche == '\r' ) { 
+                        choix = 1; 
+                        vitesse=50;} 
 
-                    if(x == 9 && touche == '\r' ) { // Si l'utilisateur appuie sur "entrer" quand le curseur est sur la troisieme case "vitesse rapide"
-                        choix = 1; // Choix vraie
-                        vitesse=50;} // vitesse à 50
+                    if(choix == 1 ){ 
 
-                    //choix des bordures
-                    if(choix == 1 ){ // condition si un choix a été effectue precedement pour la vitesse
+                        x=13; 
 
-                        x=13; // positionnement du curseur sur la ligne 13
+                        while(touche!=126){ //as long as del in not pressed
 
-                        while(touche!=126){ // Boucle tant que la touche 'DEL' n'est pas pressé
+                            affichediff(x,y); 
+                            touche = getch(); 
+                            mouvementdiff(touche,&x,&y); 
 
-                            affichediff(x,y); // Appel de la fonction d'affichage pour le choix des difficultés
-                            touche = getch(); // On réafecte l'entrée à la variable "touche"
-                            mouvementdiff(touche,&x,&y); // Déplacement du curseur en fonction de la touche pressé et des coordonnées
+                            if (x==17){x=13;} 
+                            if (x==11){x=15;} 
 
-                            if (x==17){x=13;} // Condition pour si le curseur descend en dessous de la derniere case autorisé il remonte automatiquement
-                            if (x==11){x=15;} // et inversement pour au dessus il redescend
-
-                            if(x==13 && touche == '\r') {  // Si l'utilisateur appuie sur "entrer" quand le curseur est sur la premiere case "Bordure off"
-                                bord=0; // on affecte 0 pour la variable border (faux)
-                                touche = 126; // pour sortir des deux dernieres boucles
-                                x=5; //position du X sur l ecran du menu
+                            if(x==13 && touche == '\r') {//border off if enter is pressed
+                                bord=0;
+                                touche = 126; 
+                                x=5;
                             }
 
-                            if(x==15 && touche == '\r') { // Si l'utilisateur appuie sur "entrer" quand le curseur est sur la deuxieme case "Bordure on"
-                                bord=1; // On affecte 1 (vraie) pour la variable border
-                                touche = 126; // pour sortir des deux dernieres boucles
-                                x=5; // position du X sur l ecran du menu
+                            if(x==15 && touche == '\r') { //border on if enter is pressed
+                                bord=1; 
+                                touche = 126; 
+                                x=5; 
                             }
                         }
                     }
