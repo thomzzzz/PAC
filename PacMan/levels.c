@@ -1,7 +1,7 @@
 #include "levels.h"
 
 
-//pausing every milisecond
+//pausing every millisecond
 void delay(int number_of_miliseconds){
 	clock_t start_time = clock();
 	while (clock() < start_time + number_of_miliseconds);
@@ -18,15 +18,14 @@ void save(game_t* game){
 
     if ( file == NULL)
     {
-        printf("Impossible d'ouvrir en ecriture\n");
+        printf("Error\n");
 
     }
-    else // ouverture du fichier reussie
+    else 
     {
 		fprintf(file, "%d\n", game->level);
 		fprintf(file, "%d", game->life);
 
-	// fermeture du fichier file
     fclose(file);
     }
 }
@@ -42,7 +41,7 @@ int read_save(int index){
 
     if ( file == NULL)
     {
-        printf("Impossible d'ouvrir en lecture\n");
+        printf("Error\n");
 
     }
     else 
