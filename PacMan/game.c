@@ -185,7 +185,6 @@ void game_move(game_t* game, position_t offset){
 
 
 	if (new_pos.x != game->dimension.x-1 && new_pos.x != 0 && new_pos.y != game->dimension.y-1 && new_pos.y != 0 ){
-			// si les nouvelles positions sont des murs
 			if (game->board[new_pos.y][new_pos.x] != ' '
 			&& game->board[new_pos.y][new_pos.x] != 'P'
 			&& game->board[new_pos.y][new_pos.x] != 'E'
@@ -437,7 +436,7 @@ void game_display(game_t* game){
       	}
       	else
       	{
-      		printf("%c", game->board[i][j]);// imprime
+      		printf("%c", game->board[i][j]);
       	}
 
       }
